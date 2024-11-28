@@ -1,0 +1,1 @@
+springboot集成nacos集群作为配置中心，nacos集群通过nginx负载均衡统一访问入口
