@@ -1,0 +1,30 @@
+spring:
+  profiles:
+    active: @profileActive@
+  application:
+    name: gateway
+  cloud:
+    nacos:
+      config:
+        server-addr: @serverAddr@
+        namespace: @namespace@
+        group: DEFAULT_GROUP
+        file-extension: yaml
+        import-check:
+          enabled: true
+        context-path: /nacos
+        refresh-enabled: true # 启用配置热更新
+  config:
+    import:
+      - nacos:application-${spring.profiles.active}.yaml
+      - nacos:common.yaml
+mybatis-plus:
+  configuration:
+    #    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    log-impl:
+  global-config:
+    db-config:
+      # 主键类型：自增
+      id-type: auto
+  # mapper xml文件路径
+  mapper-locations: classpath:mapper/*.xml
